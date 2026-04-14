@@ -8,6 +8,32 @@ goal is to let an agent reuse a trusted local browser session and perform
 reliable tab management, DOM actions, CDP-backed input, screenshots, and
 hybrid screenshot-guided clicks when selectors are unreliable.
 
+## Fastest start
+
+If you just want to try it, start here:
+
+```bash
+npx browser-relay-cli extension-path
+npx browser-relay-cli relay-start
+npx browser-relay-cli status
+```
+
+What these do:
+
+1. `extension-path` prints the bundled Chrome extension directory
+2. `relay-start` starts the local relay server
+3. `status` confirms whether the extension is connected
+
+Then in Chrome:
+
+1. Open `chrome://extensions`
+2. Enable `Developer mode`
+3. Click `Load unpacked`
+4. Select the path printed by `npx browser-relay-cli extension-path`
+
+If the extension is loaded and the relay is running, `npx browser-relay-cli status`
+should show `extensionConnected: true`.
+
 ## Why this exists
 
 Most agent browser tools are either:
