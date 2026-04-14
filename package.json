@@ -12,8 +12,12 @@
     "type": "git",
     "url": "git+https://github.com/jasonCodeSpace/browser-relay.git"
   },
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org/"
+  },
   "bin": {
-    "browser-relay": "./bin/browser-relay.mjs"
+    "browser-relay": "bin/browser-relay.mjs"
   },
   "files": [
     "README.md",
