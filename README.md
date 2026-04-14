@@ -120,8 +120,8 @@ curl -sS http://127.0.0.1:47892/health
 ### 4. Verify the CLI
 
 ```bash
-npx browser-relay status
-npx browser-relay list-tabs
+npx browser-relay-cli status
+npx browser-relay-cli list-tabs
 ```
 
 ## Using it after npm publish
@@ -144,6 +144,40 @@ npx browser-relay-cli status
 `extension-path` prints the package’s bundled `extension/` directory so users
 can load the same unpacked extension from the installed package location.
 
+## Easiest npm setup
+
+If you do not want to clone the GitHub repository, use the published package
+directly.
+
+### 1. Print the bundled extension path
+
+```bash
+npx browser-relay-cli extension-path
+```
+
+Copy the printed path. It will look like a package cache directory on your machine.
+
+### 2. Load the extension in Chrome
+
+1. Open `chrome://extensions`
+2. Enable `Developer mode`
+3. Click `Load unpacked`
+4. Paste or select the directory printed by `npx browser-relay-cli extension-path`
+
+### 3. Start the relay
+
+```bash
+npx browser-relay-cli relay-start
+```
+
+### 4. Verify everything is connected
+
+```bash
+npx browser-relay-cli status
+```
+
+If the extension is connected, `extensionConnected` should become `true`.
+
 ## CLI overview
 
 ### Utility commands
@@ -160,48 +194,48 @@ npx browser-relay-cli relay-start
 ### Basic relay commands
 
 ```bash
-npx browser-relay status
-npx browser-relay ping
-npx browser-relay list-tabs
+npx browser-relay-cli status
+npx browser-relay-cli ping
+npx browser-relay-cli list-tabs
 ```
 
 ### Tab control
 
 ```bash
-npx browser-relay create-tab https://www.google.com
-npx browser-relay activate 123456
-npx browser-relay navigate 123456 https://news.ycombinator.com
+npx browser-relay-cli create-tab https://www.google.com
+npx browser-relay-cli activate 123456
+npx browser-relay-cli navigate 123456 https://news.ycombinator.com
 ```
 
 ### DOM-first interaction
 
 ```bash
-npx browser-relay click 123456 'button[data-testid="reply"]'
-npx browser-relay hover 123456 'input[name="q"]'
-npx browser-relay type 123456 'textarea[name="q"]' 'canada foil container distributor'
-npx browser-relay press 123456 Enter
-npx browser-relay wait-for-selector 123456 'article'
-npx browser-relay wait-for-text 123456 'Founder'
-npx browser-relay wait-for-url 123456 '/search/results/'
-npx browser-relay scroll 123456 800
+npx browser-relay-cli click 123456 'button[data-testid="reply"]'
+npx browser-relay-cli hover 123456 'input[name="q"]'
+npx browser-relay-cli type 123456 'textarea[name="q"]' 'canada foil container distributor'
+npx browser-relay-cli press 123456 Enter
+npx browser-relay-cli wait-for-selector 123456 'article'
+npx browser-relay-cli wait-for-text 123456 'Founder'
+npx browser-relay-cli wait-for-url 123456 '/search/results/'
+npx browser-relay-cli scroll 123456 800
 ```
 
 ### Screenshot-guided interaction
 
 ```bash
-npx browser-relay viewport 123456
-npx browser-relay screenshot 123456
-npx browser-relay describe-visible 123456
-npx browser-relay click-at 123456 600 301
-npx browser-relay click-at-norm 123456 0.39 0.44
-npx browser-relay hover-at 123456 941 290
+npx browser-relay-cli viewport 123456
+npx browser-relay-cli screenshot 123456
+npx browser-relay-cli describe-visible 123456
+npx browser-relay-cli click-at 123456 600 301
+npx browser-relay-cli click-at-norm 123456 0.39 0.44
+npx browser-relay-cli hover-at 123456 941 290
 ```
 
 ### Raw method passthrough
 
 ```bash
-npx browser-relay raw BrowserRelay.getText '{"tabId":123456,"selector":"body"}'
-npx browser-relay raw CDP.send '{"tabId":123456,"method":"Runtime.evaluate","params":{"expression":"document.title","returnByValue":true}}'
+npx browser-relay-cli raw BrowserRelay.getText '{"tabId":123456,"selector":"body"}'
+npx browser-relay-cli raw CDP.send '{"tabId":123456,"method":"Runtime.evaluate","params":{"expression":"document.title","returnByValue":true}}'
 ```
 
 ## Supported relay methods
