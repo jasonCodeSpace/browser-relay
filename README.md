@@ -77,7 +77,7 @@ It does **not** attempt to:
 ### 1. Clone and install
 
 ```bash
-git clone <repo-url>
+git clone https://github.com/jasonCodeSpace/browser-relay.git
 cd browser-relay
 npm install
 ```

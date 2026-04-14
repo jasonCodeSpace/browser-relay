@@ -4,6 +4,14 @@
   "description": "Clean-room Chrome extension plus local relay for agent-driven browser control.",
   "license": "MIT",
   "type": "module",
+  "homepage": "https://github.com/jasonCodeSpace/browser-relay#readme",
+  "bugs": {
+    "url": "https://github.com/jasonCodeSpace/browser-relay/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jasonCodeSpace/browser-relay.git"
+  },
   "bin": {
     "browser-relay": "./bin/browser-relay.mjs"
   },
