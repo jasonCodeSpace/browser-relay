@@ -1,0 +1,40 @@
+{
+  "name": "browser-relay-cli",
+  "version": "0.1.0",
+  "description": "Clean-room Chrome extension plus local relay for agent-driven browser control.",
+  "license": "MIT",
+  "type": "module",
+  "bin": {
+    "browser-relay": "./bin/browser-relay.mjs"
+  },
+  "files": [
+    "README.md",
+    "CHANGELOG.md",
+    "LICENSE",
+    "bin/",
+    "docs/",
+    "extension/",
+    "lib/",
+    "server/"
+  ],
+  "keywords": [
+    "browser",
+    "chrome-extension",
+    "cdp",
+    "automation",
+    "relay",
+    "agent"
+  ],
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "relay:start": "go run ./server",
+    "cli": "node ./bin/browser-relay.mjs",
+    "test:e2e": "node ./server/test_e2e.mjs",
+    "test:multisite": "node ./server/test_multisite.mjs"
+  },
+  "dependencies": {
+    "ws": "^8.18.0"
+  }
+}

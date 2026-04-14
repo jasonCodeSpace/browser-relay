@@ -1,0 +1,164 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Browser Relay</title>
+    <style>
+      :root {
+        color-scheme: dark;
+      }
+      body {
+        margin: 0;
+        padding: 14px;
+        width: 320px;
+        background:
+          radial-gradient(circle at top, rgba(0, 255, 163, 0.12), transparent 28%),
+          linear-gradient(180deg, #111318 0%, #0a0c10 100%);
+        color: #d7ffe8;
+        font: 12px/1.45 "SFMono-Regular", Menlo, Monaco, Consolas, "Liberation Mono", monospace;
+      }
+      .shell {
+        border: 1px solid rgba(133, 255, 196, 0.18);
+        background: rgba(7, 12, 10, 0.92);
+        box-shadow: 0 0 0 1px rgba(8, 255, 173, 0.04) inset;
+      }
+      .topbar {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 8px 10px;
+        border-bottom: 1px solid rgba(133, 255, 196, 0.12);
+        color: #8bf3c1;
+      }
+      .title {
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+      }
+      .body {
+        padding: 10px;
+      }
+      .prompt {
+        margin-bottom: 10px;
+        color: #83f7bc;
+      }
+      .grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 8px;
+        margin-bottom: 10px;
+      }
+      .cell {
+        border: 1px solid rgba(133, 255, 196, 0.12);
+        background: rgba(18, 28, 23, 0.7);
+        padding: 8px;
+      }
+      .label {
+        color: #78caa0;
+        font-size: 10px;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+      }
+      .value {
+        margin-top: 4px;
+        color: #f5fff9;
+        font-size: 14px;
+      }
+      .status-ok {
+        color: #79ffb4;
+      }
+      .status-off {
+        color: #ff8f8f;
+      }
+      .controls {
+        display: grid;
+        grid-template-columns: 1fr auto;
+        gap: 8px;
+        align-items: end;
+        margin-bottom: 10px;
+      }
+      .control-group {
+        display: flex;
+        flex-direction: column;
+        gap: 4px;
+      }
+      input {
+        width: 100%;
+        box-sizing: border-box;
+        padding: 6px 8px;
+        border: 1px solid rgba(133, 255, 196, 0.18);
+        background: #0f1512;
+        color: #e8fff2;
+        font: inherit;
+      }
+      .button-row {
+        display: flex;
+        gap: 6px;
+      }
+      button {
+        padding: 6px 8px;
+        border: 1px solid rgba(133, 255, 196, 0.24);
+        background: #111a16;
+        color: #cbffe3;
+        font: inherit;
+        cursor: pointer;
+      }
+      button:hover {
+        background: #15211b;
+      }
+      .footer {
+        color: #6aa082;
+        font-size: 10px;
+        line-height: 1.4;
+      }
+      .meta {
+        display: flex;
+        justify-content: space-between;
+        gap: 8px;
+        margin-bottom: 10px;
+        color: #78caa0;
+        font-size: 10px;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="shell">
+      <div class="topbar">
+        <div class="title">browser relay</div>
+        <div id="status" class="status-off">off</div>
+      </div>
+      <div class="body">
+        <div class="prompt">$ relay status</div>
+        <div class="meta">
+          <div>socket <span id="linkStatus">down</span></div>
+          <div>mode pooled</div>
+        </div>
+        <div class="grid">
+          <div class="cell">
+            <div class="label">Relay Tabs</div>
+            <div id="relayTabCount" class="value">0</div>
+          </div>
+          <div class="cell">
+            <div class="label">Attached</div>
+            <div id="attachedTabs" class="value">0</div>
+          </div>
+        </div>
+        <div class="controls">
+          <label class="control-group">
+            <span class="label">Max Tabs</span>
+            <input id="maxTabs" type="number" min="1" max="12" />
+          </label>
+          <button id="saveMaxTabs">save</button>
+        </div>
+        <div class="button-row">
+          <button id="toggleRelay">turn on</button>
+          <button id="reconnect">reconnect</button>
+          <button id="openOptions">server</button>
+        </div>
+        <div class="footer">batch + cache + cdp input enabled</div>
+      </div>
+    </div>
+    <script src="popup.js"></script>
+  </body>
+</html>
